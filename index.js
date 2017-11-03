@@ -16,10 +16,10 @@ app.post('/webhook',(req,res) => {
 		body.entry.forEach(function(entry){
 			let webhookEvent = entry.messaging[0];
 			console.log(webhookEvent);
+			//Get the sender psid 
+			let sender_psid = webhookEvent.sender.id;
+			console.log('Sender PSID:' +sender_psid);
 		});
-		//Get the sender PSID
-		let sender_psid = webhookEvent.sender.id;
-		console.log('Sender PSID: ' + sender_psid);
 		// Returns a '200 OK' response to all requests
 		res.status(200).send('EVENT_RECEIVED');
 	}
